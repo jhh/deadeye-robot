@@ -53,7 +53,7 @@ dependencies {
     implementation wpi.java.deps.wpilib()
     implementation wpi.java.vendor.java()
 
-    implementation("org.strykeforce:deadeye:22.0.0")
+    implementation("org.strykeforce:deadeye:22.2.0")
     implementation("ch.qos.logback:logback-classic:1.2.11")
     implementation("io.github.microutils:kotlin-logging:2.1.21")
     implementation("io.dropwizard.metrics:metrics-core:4.2.8")
