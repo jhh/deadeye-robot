@@ -13,6 +13,7 @@ const val kCamera = "A0"
 val kServer = "10.27.67.10"
 private val logger = KotlinLogging.logger {}
 private val metrics = MetricRegistry()
+private val timer = Timer().apply { start() }
 
 class VisionSubsystem : SubsystemBase(), TargetDataListener<HubTargetData> {
 
@@ -36,10 +37,12 @@ class VisionSubsystem : SubsystemBase(), TargetDataListener<HubTargetData> {
 
     override fun onTargetData(data: HubTargetData) {
         fpsMeter.mark()
+        if (timer.advanceIfElapsed(5.0))
+            data.targets.forEachIndexed { index, rect -> logger.debug { "$index = $rect" } }
     }
 
     override fun periodic() {
-//        if (timer.advanceIfElapsed(5.0))
+//        if (timer.advanceIfElapsed(10.0))
 //            logger.info { "mean FPS = ${fpsMeter.meanRate}" }
     }
 }
