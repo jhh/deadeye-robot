@@ -50,6 +50,10 @@ def includeDesktopSupport = false
 // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
 // Also defines JUnit 5.
 dependencies {
+    // added to project by us
+    implementation "org.strykeforce:deadeye:22.1.0"
+
+    // added to project by template
     implementation wpi.java.deps.wpilib()
     implementation wpi.java.vendor.java()
 
@@ -67,8 +71,9 @@ dependencies {
     nativeRelease wpi.java.vendor.jniRelease(wpi.platforms.desktop)
     simulationRelease wpi.sim.enableRelease()
 
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // removed from template by us
+//    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+//    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 test {
